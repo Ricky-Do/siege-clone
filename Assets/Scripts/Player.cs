@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
         }
 
         // Ground check
-        isGrounded = Physics.Raycast(transform.position, new Vector3(0, -1, 0), 1f);
+        isGrounded = Physics.Raycast(transform.position, new Vector3(0, -1f, 0), 0.3f);
 
         if (isGrounded && velocity.y < 0)
         {
