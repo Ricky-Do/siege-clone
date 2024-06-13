@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class M4a4 : MonoBehaviour
     private int currentAmmo;
     private float fireRate = 0.3f;
     private float nextFireTime;
+    [SerializeField] Transform playerCamera;
+    [SerializeField] Transform impactMarker;
 
     private void Start(){
         currentAmmo = maxAmmo;
@@ -25,6 +28,10 @@ public class M4a4 : MonoBehaviour
     private void Shoot(){
         if(currentAmmo > 0){
             Debug.Log("Shooting m4a4");
+            if(Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit hit)){
+                Debug.Log(hit.transform.gameObject.name);
+                Instantiate(impactMarker, hit.point, Quaternion.identity);
+            }
             currentAmmo--;
             nextFireTime = Time.time + fireRate; // Set the next time the gun can fire
             if(currentAmmo <= 0){
