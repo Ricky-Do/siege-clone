@@ -13,13 +13,10 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        FollowPlayer();
+        agent.SetDestination(target.position);
     }
 
     private void FollowPlayer(){
-        if (target != null)
-        {
-            agent.SetDestination(target.position);
-        }
+
     }
 }
