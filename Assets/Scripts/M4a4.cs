@@ -28,8 +28,8 @@ public class M4a4 : MonoBehaviour
     private void Shoot(){
         if(currentAmmo > 0){
             Debug.Log("Shooting m4a4");
+            
             if(Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit hit)){
-                Debug.Log(hit.transform.gameObject.name);
                 Instantiate(impactMarker, hit.point, Quaternion.identity);
             }
             currentAmmo--;
