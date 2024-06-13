@@ -69,8 +69,6 @@ public class Player : MonoBehaviour
 
         Vector3 moveDirection = inputVector.normalized * moveSpeed * runSpeed;
 
-        Debug.Log(isGrounded);
-
         //Move the player
         controller.Move(moveDirection * Time.deltaTime);
 
