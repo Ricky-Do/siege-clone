@@ -54,10 +54,10 @@ public class Player : MonoBehaviour
         }
 
         // Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
+        // if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        // {
+        //     velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        // }
 
         // Ground check
         isGrounded = Physics.Raycast(transform.position, new Vector3(0, -1f, 0), 0.3f);

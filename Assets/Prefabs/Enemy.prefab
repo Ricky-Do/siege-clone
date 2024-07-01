@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 4624104719268473446}
   - component: {fileID: 4037623289048648646}
   - component: {fileID: 1760902526493246901}
+  - component: {fileID: 6367471832674665125}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -147,6 +148,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &6367471832674665125
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4409927184897910396}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8733240442773657623
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,7 +182,6 @@ GameObject:
   - component: {fileID: 8655686262996705252}
   - component: {fileID: 609312379053213833}
   - component: {fileID: -7213810436652456371}
-  - component: {fileID: 5171292792919543629}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -218,27 +241,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 8803545153932888253, guid: 0b97a3b9baf0ddb4fb688b78bdf4cf70, type: 3}
---- !u!135 &5171292792919543629
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8733240442773657623}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &4572974309728916818
 PrefabInstance:
   m_ObjectHideFlags: 0

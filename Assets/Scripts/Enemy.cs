@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        agent.SetDestination(target.position);
+        //agent.SetDestination(target.position);
     }
 
     private void FollowPlayer(){
