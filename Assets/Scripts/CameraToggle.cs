@@ -20,7 +20,7 @@ public class CameraToggle : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C)) // Press 'C' to toggle cameras
+        if (Input.GetKeyDown(KeyCode.Alpha6)) // Press '6' to toggle cameras
         {
             ToggleCameras();
         }
