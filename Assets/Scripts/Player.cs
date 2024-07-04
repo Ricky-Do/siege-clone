@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;
     private float jumpHeight = 2f;
+    [SerializeField] private GameInput gameInput;
 
     private void Start(){
 
@@ -29,21 +30,21 @@ public class Player : MonoBehaviour
     }
 
     private void HandleMovement(){
-        Vector3 inputVector = new Vector3(0, 0 , 0);
+        Vector3 inputVector = gameInput.GetMovementVectorNormalized();
 
         //WASD movement
-        if(Input.GetKey(KeyCode.W)){
-            inputVector += transform.forward;
-        }
-        if(Input.GetKey(KeyCode.S)){
-            inputVector -= transform.forward;
-        }
-        if(Input.GetKey(KeyCode.A)){
-            inputVector -= transform.right;
-        }
-        if(Input.GetKey(KeyCode.D)){
-            inputVector += transform.right;
-        }
+        // if(Input.GetKey(KeyCode.W)){
+        //     inputVector += transform.forward;
+        // }
+        // if(Input.GetKey(KeyCode.S)){
+        //     inputVector -= transform.forward;
+        // }
+        // if(Input.GetKey(KeyCode.A)){
+        //     inputVector -= transform.right;
+        // }
+        // if(Input.GetKey(KeyCode.D)){
+        //     inputVector += transform.right;
+        // }
         
         //Run
         if(Input.GetKeyDown(KeyCode.LeftShift)){
@@ -67,7 +68,7 @@ public class Player : MonoBehaviour
             velocity.y = -2f; // Ensure the player stays grounded
         }
 
-        Vector3 moveDirection = inputVector.normalized * moveSpeed * runSpeed;
+        Vector3 moveDirection = (inputVector.x, 0f, inputVector.y) * moveSpeed * runSpeed;
 
         //Move the player
         controller.Move(moveDirection * Time.deltaTime);

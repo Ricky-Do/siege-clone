@@ -25,7 +25,7 @@ public class CameraToggle : MonoBehaviour
             ToggleCameras();
         }
     }
-
+    
     private void ToggleCameras()
     {
         if (playerCamera.Priority > droneCamera.Priority)
