@@ -11,11 +11,14 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Move.Enable();
     }
 
+    /// <summary>
+    /// Gets normalized movement Vector3 from PlayerInputActions
+    /// </summary>
+    /// <returns>Normalized Move Vector3</returns>
     public Vector3 GetMovementVectorNormalized(){
         Vector3 inputVector = playerInputActions.Player.Move.ReadValue<Vector3>();
         inputVector = inputVector.normalized;
 
-        Debug.Log(inputVector);
         return inputVector;
     }
 }
