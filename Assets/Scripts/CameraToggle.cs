@@ -7,6 +7,7 @@ public class CameraToggle : MonoBehaviour
     [SerializeField] private Transform droneVirtualCamera; // Assign the Drone Virtual Camera in the Inspector
     private CinemachineVirtualCamera playerCamera;
     private CinemachineVirtualCamera droneCamera;
+    [SerializeField] private GameInput gameInput;
 
     private void Start()
     {
@@ -32,6 +33,7 @@ public class CameraToggle : MonoBehaviour
         {
             playerCamera.Priority = 0;
             droneCamera.Priority = 10;
+            gameInput.ToggleMovement();
         }
         else
         {

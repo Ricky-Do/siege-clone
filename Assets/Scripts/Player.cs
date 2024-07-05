@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     }
 
     private void HandleMovement(){
-        Vector3 inputVector = gameInput.GetMovementVectorNormalized();
+        Vector3 inputVector = gameInput.GetPlayerMovementVectorNormalized();
         
         //Run
         if(Input.GetKeyDown(KeyCode.LeftShift)){
