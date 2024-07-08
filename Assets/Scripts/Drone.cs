@@ -40,8 +40,6 @@ public class Drone : MonoBehaviour
         //Apply force to drone rb
         rigidbody.AddForce(moveDirection, ForceMode.Force);
 
-        Debug.Log($"Drone is grounded: {isGrounded}");
-
         // Jumping
         if (Input.GetKey(KeyCode.Space) && isGrounded)
         {

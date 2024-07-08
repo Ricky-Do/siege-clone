@@ -126,7 +126,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1903adc4-8131-48a7-b51b-7c7b993c2349"",
+                    ""id"": ""5c063084-e349-415d-8c44-bee8798fab4f"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",

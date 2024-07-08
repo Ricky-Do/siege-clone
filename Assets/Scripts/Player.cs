@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private float lookSpeed = 1f;
-    private float rotationX;
+    //MODIFIERS
+    private float lookSpeed = 20f;
     private float moveSpeed = 10f;
-    [SerializeField] private GameObject playerCamera;
+    private float jumpHeight = 2f;
     private float runSpeed = 1f;
+
+    [SerializeField] private GameObject playerCamera;
     private CharacterController controller;
     private float gravity = -9.81f;
     private Vector3 velocity;
     private bool isGrounded;
-    private float jumpHeight = 2f;
+    private float rotationX;
     [SerializeField] private GameInput gameInput;
 
     private void Start(){
@@ -71,9 +73,11 @@ public class Player : MonoBehaviour
     /// </summary>
     private void HandleCameraMovement()
     {
+        Vector2 inputVector = gameInput.GetLookVector();
+
         // Get mouse input
-        float mouseX = Input.GetAxis("Mouse X") * lookSpeed;
-        float mouseY = Input.GetAxis("Mouse Y") * lookSpeed;
+        float mouseX = inputVector.x * lookSpeed * Time.deltaTime;
+        float mouseY = inputVector.y * lookSpeed * Time.deltaTime;
 
         //Rotate the player camera on the X-axis to look up and down
 		rotationX -= mouseY;

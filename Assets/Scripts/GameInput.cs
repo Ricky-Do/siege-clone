@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class GameInput : MonoBehaviour
 {
@@ -9,10 +10,10 @@ public class GameInput : MonoBehaviour
 
     private void Awake(){
         playerInputActions = new PlayerInputActions();
-        playerInputActions.Player.Move.Enable();
+        playerInputActions.Player.Enable();
 
         droneInputActions =  new DroneInputActions();
-        droneInputActions.Drone.Move.Enable();
+        droneInputActions.Drone.Enable();
     }
 
     /// <summary>
@@ -26,6 +27,15 @@ public class GameInput : MonoBehaviour
         return inputVector;
     }
 
+    //TO DO: MIGHT NEED TO GET NORMALISED VALUE LATER
+    public Vector2 GetLookVector(){
+        Vector2 inputVector = playerInputActions.Player.Look.ReadValue<Vector2>();
+
+        Debug.Log(inputVector);
+
+        return inputVector;
+    }
+
     /// <summary>
     /// Gets normalized movement Vector3 from DroneInputActions
     /// </summary>
@@ -34,7 +44,6 @@ public class GameInput : MonoBehaviour
         Vector3 inputVector = droneInputActions.Drone.Move.ReadValue<Vector3>();
         inputVector = inputVector.normalized;
 
-        Debug.Log($"Drone Vector: {inputVector}");
         return inputVector;
     }
 
