@@ -38,7 +38,7 @@ public class GameInput : MonoBehaviour
         return inputVector;
     }
 
-    public void ToggleMovement(){
+    public void TogglePlayerMovement(){
         if(playerInputActions.Player.Move.enabled){
             playerInputActions.Player.Move.Disable();
         }

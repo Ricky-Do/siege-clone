@@ -33,12 +33,13 @@ public class CameraToggle : MonoBehaviour
         {
             playerCamera.Priority = 0;
             droneCamera.Priority = 10;
-            gameInput.ToggleMovement();
+            gameInput.TogglePlayerMovement();
         }
         else
         {
             playerCamera.Priority = 10;
             droneCamera.Priority = 0;
+            gameInput.TogglePlayerMovement();
         }
     }
 }

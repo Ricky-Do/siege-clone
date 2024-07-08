@@ -4,54 +4,60 @@ using UnityEngine;
 
 public class Drone : MonoBehaviour
 {
-    private float lookSpeed = 1f;
+    private float lookSpeed = 500f;
     private float rotationX;
-    private float moveSpeed = 10f;
+    private float moveSpeed = 20f;
     [SerializeField] private GameObject droneCamera;
     private float gravity = -9.81f;
-    private Vector3 velocity;
     private bool isGrounded;
-    private float jumpHeight = 2f;
+    private float jumpHeight = 50f;
     [SerializeField] private GameInput gameInput;
+    private Rigidbody rigidbody;
+    private float maxVelocity = 20f;
 
-    // Start is called before the first frame update
-    void Start(){
-
+    private void Awake(){
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update(){
-        HandleMovement();
         HandleCameraMovement();
+    }
+
+    private void FixedUpdate(){
+        HandleMovement();
     }
 
     private void HandleMovement(){
         Vector3 inputVector = gameInput.GetDroneMovementVectorNormalized();
 
-        // Jumping
-        // if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        // {
-        //     velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        // }
-
         // Ground check
-        isGrounded = Physics.Raycast(transform.position, new Vector3(0, -1f, 0), 0.3f);
+        isGrounded = Physics.Raycast(transform.position, -transform.up, 0.3f);
 
-        if (isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f; // Ensure the player stays grounded
-        }
-
+        //Calculate move vector
         Vector3 moveDirection = transform.TransformDirection(new Vector3(inputVector.x, 0f, inputVector.z) * moveSpeed);
 
-        //Move the player
-        //controller.Move(moveDirection * Time.deltaTime);
+        //Apply force to drone rb
+        rigidbody.AddForce(moveDirection, ForceMode.Force);
 
-        //Apply gravity
-        velocity.y += gravity * Time.deltaTime;
+        Debug.Log($"Drone is grounded: {isGrounded}");
 
-        //controller.Move(velocity * Time.deltaTime);
+        // Jumping
+        if (Input.GetKey(KeyCode.Space) && isGrounded)
+        {
+            rigidbody.AddForce(transform.up * jumpHeight, ForceMode.VelocityChange);
+        }
 
+        //Limit the max speed of drone
+        LimitVelocity();
+    }
+
+     private void LimitVelocity()
+    {
+        if (rigidbody.velocity.magnitude > maxVelocity)
+        {
+            rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxVelocity);
+        }
     }
 
     /// <summary>
@@ -60,8 +66,8 @@ public class Drone : MonoBehaviour
     private void HandleCameraMovement()
     {
         // Get mouse input
-        float mouseX = Input.GetAxis("Mouse X") * lookSpeed;
-        float mouseY = Input.GetAxis("Mouse Y") * lookSpeed;
+        float mouseX = Input.GetAxis("Mouse X") * lookSpeed * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * lookSpeed * Time.deltaTime;
 
         //Rotate the player camera on the X-axis to look up and down
 		rotationX -= mouseY;
