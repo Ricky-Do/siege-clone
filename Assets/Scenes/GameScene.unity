@@ -362,7 +362,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 30
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -389,7 +389,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5793333, y: 0.181, z: -11.394514}
+  m_LocalPosition: {x: 0, y: 3.303, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -653,26 +653,11 @@ PrefabInstance:
       propertyPath: gameInput
       value: 
       objectReference: {fileID: 1773106987}
-    - target: {fileID: 2112383019099437353, guid: 0b97a3b9baf0ddb4fb688b78bdf4cf70,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2362908617467551509, guid: 0b97a3b9baf0ddb4fb688b78bdf4cf70,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
     - target: {fileID: 4989741055141639681, guid: 0b97a3b9baf0ddb4fb688b78bdf4cf70,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5960013703354533714, guid: 0b97a3b9baf0ddb4fb688b78bdf4cf70,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1525227664}
     - target: {fileID: 5960013703354533714, guid: 0b97a3b9baf0ddb4fb688b78bdf4cf70,
         type: 3}
       propertyPath: gameInput
