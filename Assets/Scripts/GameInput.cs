@@ -13,7 +13,7 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Enable();
 
         droneInputActions =  new DroneInputActions();
-        droneInputActions.Drone.Enable();
+        droneInputActions.Drone.Disable();
     }
 
     /// <summary>
@@ -27,11 +27,14 @@ public class GameInput : MonoBehaviour
         return inputVector;
     }
 
-    //TO DO: MIGHT NEED TO GET NORMALISED VALUE LATER
-    public Vector2 GetLookVector(){
+    public Vector2 GetPlayerLookVector(){
         Vector2 inputVector = playerInputActions.Player.Look.ReadValue<Vector2>();
 
-        Debug.Log(inputVector);
+        return inputVector;
+    }
+
+    public Vector2 GetDroneLookVector(){
+        Vector2 inputVector = droneInputActions.Drone.Look.ReadValue<Vector2>();
 
         return inputVector;
     }
@@ -48,11 +51,13 @@ public class GameInput : MonoBehaviour
     }
 
     public void TogglePlayerMovement(){
-        if(playerInputActions.Player.Move.enabled){
-            playerInputActions.Player.Move.Disable();
+        if(playerInputActions.Player.enabled){
+            playerInputActions.Player.Disable();
+            droneInputActions.Drone.Enable();
         }
         else{
-            playerInputActions.Player.Move.Enable();
+            playerInputActions.Player.Enable();
+            droneInputActions.Drone.Disable();
         }
     }
 }

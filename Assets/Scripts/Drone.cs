@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class Drone : MonoBehaviour
 {
-    private float lookSpeed = 500f;
-    private float rotationX;
+    //MODIFIERS
+    private float lookSpeed = 25f;
     private float moveSpeed = 20f;
+    private float jumpHeight = 5f;
+    private float maxVelocity = 10f;
+
+    private float rotationX;
     [SerializeField] private GameObject droneCamera;
     private float gravity = -9.81f;
     private bool isGrounded;
-    private float jumpHeight = 50f;
     [SerializeField] private GameInput gameInput;
     private Rigidbody rigidbody;
-    private float maxVelocity = 20f;
 
     private void Awake(){
         rigidbody = GetComponent<Rigidbody>();
@@ -46,6 +48,10 @@ public class Drone : MonoBehaviour
             rigidbody.AddForce(transform.up * jumpHeight, ForceMode.VelocityChange);
         }
 
+        if(!isGrounded){
+            rigidbody.velocity += transform.up * gravity * Time.fixedDeltaTime;
+        }
+
         //Limit the max speed of drone
         LimitVelocity();
     }
@@ -63,9 +69,11 @@ public class Drone : MonoBehaviour
     /// </summary>
     private void HandleCameraMovement()
     {
+        Vector2 inputVector = gameInput.GetDroneLookVector();
+
         // Get mouse input
-        float mouseX = Input.GetAxis("Mouse X") * lookSpeed * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * lookSpeed * Time.deltaTime;
+        float mouseX = inputVector.x * lookSpeed * Time.deltaTime;
+        float mouseY = inputVector.y * lookSpeed * Time.deltaTime;
 
         //Rotate the player camera on the X-axis to look up and down
 		rotationX -= mouseY;

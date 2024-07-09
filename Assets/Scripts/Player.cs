@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
     /// </summary>
     private void HandleCameraMovement()
     {
-        Vector2 inputVector = gameInput.GetLookVector();
+        Vector2 inputVector = gameInput.GetPlayerLookVector();
 
         // Get mouse input
         float mouseX = inputVector.x * lookSpeed * Time.deltaTime;

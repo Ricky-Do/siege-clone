@@ -35,6 +35,15 @@ public partial class @DroneInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""81e99a21-99c5-4f74-a330-1a94c8104376"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -114,6 +123,17 @@ public partial class @DroneInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9ddcd51f-f218-46b7-98bb-c223623ad806"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -123,6 +143,7 @@ public partial class @DroneInputActions: IInputActionCollection2, IDisposable
         // Drone
         m_Drone = asset.FindActionMap("Drone", throwIfNotFound: true);
         m_Drone_Move = m_Drone.FindAction("Move", throwIfNotFound: true);
+        m_Drone_Look = m_Drone.FindAction("Look", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -185,11 +206,13 @@ public partial class @DroneInputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Drone;
     private List<IDroneActions> m_DroneActionsCallbackInterfaces = new List<IDroneActions>();
     private readonly InputAction m_Drone_Move;
+    private readonly InputAction m_Drone_Look;
     public struct DroneActions
     {
         private @DroneInputActions m_Wrapper;
         public DroneActions(@DroneInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Drone_Move;
+        public InputAction @Look => m_Wrapper.m_Drone_Look;
         public InputActionMap Get() { return m_Wrapper.m_Drone; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -202,6 +225,9 @@ public partial class @DroneInputActions: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Look.started += instance.OnLook;
+            @Look.performed += instance.OnLook;
+            @Look.canceled += instance.OnLook;
         }
 
         private void UnregisterCallbacks(IDroneActions instance)
@@ -209,6 +235,9 @@ public partial class @DroneInputActions: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Look.started -= instance.OnLook;
+            @Look.performed -= instance.OnLook;
+            @Look.canceled -= instance.OnLook;
         }
 
         public void RemoveCallbacks(IDroneActions instance)
@@ -229,5 +258,6 @@ public partial class @DroneInputActions: IInputActionCollection2, IDisposable
     public interface IDroneActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
     }
 }
