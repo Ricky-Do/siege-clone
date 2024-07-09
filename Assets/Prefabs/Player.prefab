@@ -436,6 +436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 4342403282611046907}
+  gameInput: {fileID: 0}
 --- !u!143 &3701904134570201444
 CharacterController:
   m_ObjectHideFlags: 0
@@ -489,6 +490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerVirtualCamera: {fileID: 2493599049600666608}
   droneVirtualCamera: {fileID: 0}
+  gameInput: {fileID: 0}
 --- !u!1 &6665144278359623339
 GameObject:
   m_ObjectHideFlags: 0

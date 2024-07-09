@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class Drone : MonoBehaviour
     //MODIFIERS
     private float lookSpeed = 25f;
     private float moveSpeed = 20f;
-    private float jumpHeight = 5f;
+    private float jumpHeight = 10f;
     private float maxVelocity = 10f;
 
     private float rotationX;
@@ -19,6 +20,10 @@ public class Drone : MonoBehaviour
 
     private void Awake(){
         rigidbody = GetComponent<Rigidbody>();
+    }
+
+    private void Start(){
+        gameInput.OnJumpPerformed += GameInput_OnJumpPerformed;
     }
 
     // Update is called once per frame
@@ -43,10 +48,10 @@ public class Drone : MonoBehaviour
         rigidbody.AddForce(moveDirection, ForceMode.Force);
 
         // Jumping
-        if (Input.GetKey(KeyCode.Space) && isGrounded)
-        {
-            rigidbody.AddForce(transform.up * jumpHeight, ForceMode.VelocityChange);
-        }
+        // if (Input.GetKey(KeyCode.Space) && isGrounded)
+        // {
+        //     rigidbody.AddForce(transform.up * jumpHeight, ForceMode.VelocityChange);
+        // }
 
         if(!isGrounded){
             rigidbody.velocity += transform.up * gravity * Time.fixedDeltaTime;
@@ -54,6 +59,15 @@ public class Drone : MonoBehaviour
 
         //Limit the max speed of drone
         LimitVelocity();
+    }
+
+    private void GameInput_OnJumpPerformed(object sender, EventArgs e)
+    {
+        // Jumping
+        if (isGrounded)
+        {
+            rigidbody.AddForce(transform.up * jumpHeight, ForceMode.Impulse);
+        }
     }
 
      private void LimitVelocity()

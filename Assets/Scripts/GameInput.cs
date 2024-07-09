@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.InputSystem;
 
 public class GameInput : MonoBehaviour
 {
     PlayerInputActions playerInputActions;
     DroneInputActions droneInputActions;
+    public event EventHandler OnJumpPerformed;
 
     private void Awake(){
         playerInputActions = new PlayerInputActions();
@@ -14,6 +17,13 @@ public class GameInput : MonoBehaviour
 
         droneInputActions =  new DroneInputActions();
         droneInputActions.Drone.Disable();
+
+        droneInputActions.Drone.Jump.performed += DroneJump_performed;
+    }
+
+    private void DroneJump_performed(InputAction.CallbackContext context)
+    {
+        OnJumpPerformed?.Invoke(this, EventArgs.Empty);
     }
 
     /// <summary>
