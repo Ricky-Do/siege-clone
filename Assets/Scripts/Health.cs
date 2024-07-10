@@ -33,4 +33,6 @@ public class Health : MonoBehaviour
         Debug.Log($"{currentHealth} - 10");
         Debug.Log($"Health: {currentHealth - 10}");
     }
+
+    
 }
