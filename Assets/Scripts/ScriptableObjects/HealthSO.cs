@@ -6,4 +6,5 @@ using UnityEngine;
 public class HealthSO : ScriptableObject
 {
     public float maxHealth;
+    public string name;
 }

@@ -11,7 +11,7 @@ public class GameInput : MonoBehaviour
     DroneInputActions droneInputActions;
     public event EventHandler OnJumpPerformed;
     public event EventHandler OnRunPerformed;
-    public event EventHandler OnRunCancelled;
+    public event EventHandler OnRunCanceled;
     public static GameInput Instance {get; private set;}
 
     private void Awake(){
@@ -25,7 +25,7 @@ public class GameInput : MonoBehaviour
 
         droneInputActions.Drone.Jump.performed += DroneJump_performed;
         playerInputActions.Player.Run.performed += PlayerRun_performed;
-        playerInputActions.Player.Run.cancelled += PlayerRun_cancelled;
+        playerInputActions.Player.Run.canceled += PlayerRun_canceled;
     }
 
     /// <summary>
@@ -41,9 +41,8 @@ public class GameInput : MonoBehaviour
     {
         OnRunPerformed?.Invoke(this, EventArgs.Empty);
     }
-
-    private void PlayerRun_cancelled(InputAction.CallbackContext context){
-        OnRunCancelled?.Invoke(this, EventArgs.Empty);
+    private void PlayerRun_canceled(InputAction.CallbackContext context){
+        OnRunCanceled?.Invoke(this, EventArgs.Empty);
     }
 
     /// <summary>

@@ -27,13 +27,12 @@ public class Player : MonoBehaviour
         controller = GetComponent<CharacterController>();
 
         gameInput.OnRunPerformed += GameInput_OnRunPerformed;
-        gameInput.OnRunCancelled += GameInput_OnRunCancelled;
+        gameInput.OnRunCanceled += GameInput_OnRunCanceled;
     }
 
     private void Update(){
         HandleMovement();
         HandleCameraMovement();
-        Debug.Log($"RunSpeed: {runSpeed}");
     }
 
     private void HandleMovement(){
@@ -74,8 +73,10 @@ public class Player : MonoBehaviour
     }
 
     private void GameInput_OnRunPerformed(object sender, EventArgs e){
-        //Run
         runSpeed = 1.25f;
+    }
+    private void GameInput_OnRunCanceled(object sender, EventArgs e){
+        runSpeed = 1f;
     }
 
     /// <summary>

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: EnemyHealth
   m_EditorClassIdentifier: 
   maxHealth: 200
+  name: Enemy

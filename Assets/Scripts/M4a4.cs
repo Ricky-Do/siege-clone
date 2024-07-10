@@ -27,7 +27,7 @@ public class M4a4 : MonoBehaviour
     
     private void Shoot(){
         if(currentAmmo > 0){
-            Debug.Log("Shooting m4a4");
+            //Debug.Log("Shooting m4a4");
             
             if(Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit hit)){
                 Instantiate(impactMarker, hit.point, Quaternion.identity);
@@ -35,22 +35,22 @@ public class M4a4 : MonoBehaviour
             currentAmmo--;
             nextFireTime = Time.time + fireRate; // Set the next time the gun can fire
             if(currentAmmo <= 0){
-                Debug.Log("No ammo. Need to reload.");
+                //Debug.Log("No ammo. Need to reload.");
             }
         }
         else if(Input.GetKeyDown(KeyCode.Mouse0) && currentAmmo <= 0){
-            Debug.Log("No ammo. Need to reload.");
+            //Debug.Log("No ammo. Need to reload.");
         }
     }
 
     private void Reload(){
         if(currentAmmo == maxAmmo){
-            Debug.Log("Ammo full. Can't reload");
+            //Debug.Log("Ammo full. Can't reload");
         }
         else{
-            Debug.Log("Reloading m4a4");
+            //Debug.Log("Reloading m4a4");
             currentAmmo = maxAmmo;
-            Debug.Log("Reloaded");
+            //Debug.Log("Reloaded");
         }
     }
 }

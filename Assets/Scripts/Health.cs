@@ -11,6 +11,18 @@ public class Health : MonoBehaviour
     private void Start(){
         currentHealth = healthSO.maxHealth;
 
-        Debug.Log($"Player health: {currentHealth}");
+        Debug.Log($"{healthSO.name}: {currentHealth}");
+    }
+
+    private void Update(){
+        if(Input.GetKeyDown(KeyCode.Mouse0)){
+            TakeDamage();
+            currentHealth -= 10;
+        }
+    }
+
+    private void TakeDamage(){
+        Debug.Log($"{currentHealth} - 10");
+        Debug.Log($"Health: {currentHealth - 10}");
     }
 }
