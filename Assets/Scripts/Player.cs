@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -24,23 +25,27 @@ public class Player : MonoBehaviour
         Cursor.visible = false;
 
         controller = GetComponent<CharacterController>();
+
+        gameInput.OnRunPerformed += GameInput_OnRunPerformed;
+        gameInput.OnRunCancelled += GameInput_OnRunCancelled;
     }
 
     private void Update(){
         HandleMovement();
         HandleCameraMovement();
+        Debug.Log($"RunSpeed: {runSpeed}");
     }
 
     private void HandleMovement(){
         Vector3 inputVector = gameInput.GetPlayerMovementVectorNormalized();
         
         //Run
-        if(Input.GetKeyDown(KeyCode.LeftShift)){
-            runSpeed = 2f;
-        }
-        if(Input.GetKeyUp(KeyCode.LeftShift)){
-            runSpeed = 1f;
-        }
+        // if(Input.GetKeyDown(KeyCode.LeftShift)){
+        //     runSpeed = 1.25f;
+        // }
+        // if(Input.GetKeyUp(KeyCode.LeftShift)){
+        //     runSpeed = 1f;
+        // }
 
         // Jumping
         // if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -66,6 +71,11 @@ public class Player : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
+    }
+
+    private void GameInput_OnRunPerformed(object sender, EventArgs e){
+        //Run
+        runSpeed = 1.25f;
     }
 
     /// <summary>
