@@ -16,7 +16,7 @@ public class Drone : MonoBehaviour
     private float gravity = -9.81f;
     private bool isGrounded;
     [SerializeField] private GameInput gameInput;
-    private Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
 
     private void Awake(){
         rigidbody = GetComponent<Rigidbody>();

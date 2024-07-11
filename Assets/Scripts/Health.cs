@@ -8,9 +8,9 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private HealthSO healthSO;
 
-    public event EventHandler<OnHealthUpdateEventArgs> OnHealthUpdate;
-    public class OnHealthUpdateEventArgs : EventArgs{
-        public float healthChange;
+    public event EventHandler<OnTakeDamageEventArgs> OnTakeDamage;
+    public class OnTakeDamageEventArgs : EventArgs{
+        public float damageTaken;
     }
 
     private float currentHealth;
@@ -24,10 +24,8 @@ public class Health : MonoBehaviour
     }
 
     public void TakeDamage(float damage){
-        OnHealthUpdate?.Invoke(this, new OnHealthUpdateEventArgs{healthChange = damage});
-        Debug.Log($"{healthSO.name} Health: {currentHealth}");
-        Debug.Log($"{healthSO.name} Damage: {damage}");
-        currentHealth += damage;
+        OnTakeDamage?.Invoke(this, new OnTakeDamageEventArgs{damageTaken = damage});
+        currentHealth -= damage;
         Debug.Log($"{healthSO.name}: {currentHealth}");
         CheckDeath();
     }

@@ -21,12 +21,12 @@ public class HealthBar : MonoBehaviour
 
         maxHealth = healthSO.maxHealth;
         currentHealth = maxHealth;
-        health.OnHealthUpdate += Health_OnHealthUpdate;
+        health.OnTakeDamage += Health_OnHealthUpdate;
     }
 
-    private void Health_OnHealthUpdate(object sender, Health.OnHealthUpdateEventArgs e)
+    private void Health_OnHealthUpdate(object sender, Health.OnTakeDamageEventArgs e)
     {
-        currentHealth += e.healthChange;
+        currentHealth += e.damageTaken;
     }
 
     // Update is called once per frame

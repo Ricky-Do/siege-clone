@@ -8,6 +8,7 @@ public class M4a4 : MonoBehaviour
     private int maxAmmo = 30;
     private int currentAmmo;
     private float fireRate = 0.3f;
+    private float damage = 20f;
     private float nextFireTime;
     [SerializeField] Transform playerCamera;
     [SerializeField] GameObject impactMarker;
@@ -63,7 +64,7 @@ public class M4a4 : MonoBehaviour
 
             //If target has Health component, apply damage
             if(targetHit.collider.gameObject.transform.TryGetComponent<Health>(out Health health)){
-                health.TakeDamage(-10f);
+                health.TakeDamage(damage);
             }
         }
     }
