@@ -10,7 +10,7 @@ public class M4a4 : MonoBehaviour
     private float fireRate = 0.3f;
     private float nextFireTime;
     [SerializeField] Transform playerCamera;
-    [SerializeField] Transform impactMarker;
+    [SerializeField] GameObject impactMarker;
 
     private void Start(){
         currentAmmo = maxAmmo;
@@ -28,10 +28,9 @@ public class M4a4 : MonoBehaviour
     private void Shoot(){
         if(currentAmmo > 0){
             //Debug.Log("Shooting m4a4");
+    
+            DamageTarget();
             
-            if(Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit hit)){
-                Instantiate(impactMarker, hit.point, Quaternion.identity);
-            }
             currentAmmo--;
             nextFireTime = Time.time + fireRate; // Set the next time the gun can fire
             if(currentAmmo <= 0){
@@ -51,6 +50,20 @@ public class M4a4 : MonoBehaviour
             //Debug.Log("Reloading m4a4");
             currentAmmo = maxAmmo;
             //Debug.Log("Reloaded");
+        }
+    }
+
+    private void DamageTarget(){
+        //Raycast to detect bullet impact
+        if(Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit targetHit)){
+            //Spawn marker on bullet impact
+            GameObject marker = Instantiate(impactMarker, targetHit.point, Quaternion.identity);
+            Destroy(marker, 2f);
+
+            //If target has Health component, apply damage
+            if(targetHit.collider.gameObject.transform.TryGetComponent<Health>(out Health health)){
+                health.TakeDamage(-10f);
+            }
         }
     }
 }

@@ -37,14 +37,6 @@ public class Player : MonoBehaviour
 
     private void HandleMovement(){
         Vector3 inputVector = gameInput.GetPlayerMovementVectorNormalized();
-        
-        //Run
-        // if(Input.GetKeyDown(KeyCode.LeftShift)){
-        //     runSpeed = 1.25f;
-        // }
-        // if(Input.GetKeyUp(KeyCode.LeftShift)){
-        //     runSpeed = 1f;
-        // }
 
         // Jumping
         // if (Input.GetKeyDown(KeyCode.Space) && isGrounded)

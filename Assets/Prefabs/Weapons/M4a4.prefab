@@ -310,6 +310,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d415704fbae4543b64f63ca5bd9a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCamera: {fileID: 0}
+  impactMarker: {fileID: 6735988489180708570, guid: 54df35926a077c745bb564f137dcb536,
+    type: 3}
 --- !u!1 &4616321220193528906
 GameObject:
   m_ObjectHideFlags: 0

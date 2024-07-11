@@ -17,21 +17,18 @@ public class Health : MonoBehaviour
 
     private void Start(){
         currentHealth = healthSO.maxHealth;
-
-        Debug.Log($"{healthSO.name}: {currentHealth}");
     }
 
     private void Update(){
-        if(Input.GetKeyDown(KeyCode.Mouse0)){
-            TakeDamage();
-            currentHealth -= 10;
-        }
+        
     }
 
-    private void TakeDamage(){
-        OnHealthUpdate?.Invoke(this, new OnHealthUpdateEventArgs{healthChange = -10f});
-        Debug.Log($"{currentHealth} - 10");
-        Debug.Log($"Health: {currentHealth - 10}");
+    public void TakeDamage(float damage){
+        OnHealthUpdate?.Invoke(this, new OnHealthUpdateEventArgs{healthChange = damage});
+        Debug.Log($"{healthSO.name} Health: {currentHealth}");
+        Debug.Log($"{healthSO.name} Damage: {damage}");
+        currentHealth += damage;
+        Debug.Log($"{healthSO.name}: {currentHealth}");
     }
 
     

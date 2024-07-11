@@ -75,7 +75,6 @@ GameObject:
   - component: {fileID: 4624104719268473446}
   - component: {fileID: 4037623289048648646}
   - component: {fileID: 1760902526493246901}
-  - component: {fileID: 6367471832674665125}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -148,29 +147,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6367471832674665125
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4409927184897910396}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8733240442773657623
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,6 +159,7 @@ GameObject:
   - component: {fileID: 609312379053213833}
   - component: {fileID: -7213810436652456371}
   - component: {fileID: 5446884672678172821}
+  - component: {fileID: 3505820476749903574}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -255,6 +232,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSO: {fileID: 11400000, guid: 96aba8401abd6c74886dda6114bdb29f, type: 2}
+--- !u!136 &3505820476749903574
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8733240442773657623}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.98, z: 0}
 --- !u!1001 &4572974309728916818
 PrefabInstance:
   m_ObjectHideFlags: 0
