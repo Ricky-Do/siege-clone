@@ -29,6 +29,13 @@ public class Health : MonoBehaviour
         Debug.Log($"{healthSO.name} Damage: {damage}");
         currentHealth += damage;
         Debug.Log($"{healthSO.name}: {currentHealth}");
+        CheckDeath();
+    }
+
+    private void CheckDeath(){
+        if(currentHealth <= 0){
+            Destroy(gameObject);
+        }
     }
 
     

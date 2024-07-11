@@ -56,9 +56,10 @@ public class M4a4 : MonoBehaviour
     private void DamageTarget(){
         //Raycast to detect bullet impact
         if(Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit targetHit)){
+
             //Spawn marker on bullet impact
             GameObject marker = Instantiate(impactMarker, targetHit.point, Quaternion.identity);
-            Destroy(marker, 2f);
+            Destroy(marker, 1f);
 
             //If target has Health component, apply damage
             if(targetHit.collider.gameObject.transform.TryGetComponent<Health>(out Health health)){
